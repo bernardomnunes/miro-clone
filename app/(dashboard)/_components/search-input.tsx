@@ -10,9 +10,9 @@ import { useDebounceValue } from "usehooks-ts";
 const SearchInput = () => {
   const router = useRouter()
   const [value, setValue] = useState('')
-  const debouncedValue = useDebounceValue(value, 500)
+  // const debouncedValue = useDebounceValue(value, 500)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
   }
 
@@ -20,12 +20,12 @@ const SearchInput = () => {
     const url = qs.stringifyUrl({
       url: '/',
       query: {
-        search: debouncedValue
+        search: value
       },
     }, {skipEmptyString: true, skipNull: true})
 
     router.push(url)
-  }, [debounceValue, router])
+  }, [router, value])
 
   return ( 
     <div className="w-full relative">
@@ -36,6 +36,8 @@ const SearchInput = () => {
       <Input 
         className="w-full max-w-[516px] pl-9"
         placeholder="Search boards"
+        onChange={handleChangeValue}
+        value={value}
       />
     </div>
    );
