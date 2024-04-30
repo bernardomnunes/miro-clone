@@ -1,5 +1,5 @@
 import Navbar from "./_components/navbar";
-import OrgSidebar from "./_components/org-sidebart";
+import OrgSidebar from "./_components/org-sidebar";
 import Sidebar from "./_components/sidebar";
 
 const DashboardLayout = ({children} : {children: React.ReactNode}) => {
